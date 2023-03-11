@@ -7,7 +7,14 @@ const phoneLoad = async (search) => {
 const displayPhone = phones => {
     const phonesContainer = document.getElementById('phones-container');
     phonesContainer.innerHTML = '';
-    phones = phones.slice(0, 9);
+    const showAll = document.getElementById('show-all');
+    if (phones.length > 10) {
+        phones = phones.slice(0, 9);
+        showAll.classList.remove('d-none')
+    } else {
+        showAll.classList.add('d-none')
+    }
+
     const h1 = document.getElementById('error-message');
     if (phones.length === 0) {
         h1.classList.remove('d-none')
@@ -30,14 +37,19 @@ const displayPhone = phones => {
         console.log(phone)
     });
     spinLoader(false)
-}
+};
 
-document.getElementById('search-button').addEventListener('click', function () {
-    spinLoader(true);
+const searchProcess = () => {
+
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
     searchField.value = '';
     phoneLoad(searchText);
+}
+
+document.getElementById('search-button').addEventListener('click', function () {
+    spinLoader(true);
+    searchProcess()
 });
 
 const spinLoader = isLoading => {
@@ -47,6 +59,10 @@ const spinLoader = isLoading => {
     } else {
         phoneLoader.classList.add('d-none')
     }
-}
+};
+
+document.getElementById('btn-show-all').addEventListener('click', function () {
+    searchProcess()
+})
 
 // phoneLoad('')
