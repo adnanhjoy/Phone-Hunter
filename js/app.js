@@ -6,6 +6,14 @@ const phoneLoad = async (search) => {
 
 const displayPhone = phones => {
     const phonesContainer = document.getElementById('phones-container');
+    phonesContainer.innerHTML = '';
+    // phones.phones.slice(0.3);
+    const h1 = document.getElementById('error-message');
+    if (phones.length === 0) {
+        h1.classList.remove('d-none')
+    } else {
+        h1.classList.add('d-none')
+    }
     phones.forEach(phone => {
         const div = document.createElement('div');
         div.classList.add('col');
@@ -27,7 +35,7 @@ const displayPhone = phones => {
 document.getElementById('search-button').addEventListener('click', function () {
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
-    searchField.value = ''
+    searchField.value = '';
     phoneLoad(searchText);
 })
 
