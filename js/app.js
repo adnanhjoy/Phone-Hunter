@@ -7,7 +7,7 @@ const phoneLoad = async (search) => {
 const displayPhone = phones => {
     const phonesContainer = document.getElementById('phones-container');
     phonesContainer.innerHTML = '';
-    // phones.phones.slice(0.3);
+    phones = phones.slice(0, 9);
     const h1 = document.getElementById('error-message');
     if (phones.length === 0) {
         h1.classList.remove('d-none')
@@ -19,7 +19,7 @@ const displayPhone = phones => {
         div.classList.add('col');
         div.innerHTML = `
         <div class="card">
-            <img src="${phone.image}" class="card-img-top" alt="...">
+            <img src="${phone.image}" class="card-img-top w-25" alt="...">
             <div class="card-body">
                 <h5 class="card-title">${phone.phone_name}</h5>
                 <p class="card-text">${phone.slug}</p>
@@ -28,15 +28,25 @@ const displayPhone = phones => {
         `;
         phonesContainer.appendChild(div)
         console.log(phone)
-    })
-        ;
+    });
+    spinLoader(false)
 }
 
 document.getElementById('search-button').addEventListener('click', function () {
+    spinLoader(true);
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
     searchField.value = '';
     phoneLoad(searchText);
-})
+});
 
-phoneLoad('')
+const spinLoader = isLoading => {
+    const phoneLoader = document.getElementById('loader');
+    if (isLoading) {
+        phoneLoader.classList.remove('d-none')
+    } else {
+        phoneLoader.classList.add('d-none')
+    }
+}
+
+// phoneLoad('')

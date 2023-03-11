@@ -20,12 +20,18 @@
 
 
     <main>
-        <h1 id="error-message" class="text-warning d-none">No Phones Found</h1>
+        <h1 id="error-message" class="text-warning d-none text-center mt-5">No Phones Found</h1>
         <section class="container">
             <div id="phones-container" class="row row-cols-1 row-cols-md-3 g-4">
 
             </div>
         </section>
+
+        <div id="loader" style="height: 500px;" class="d-flex justify-content-center align-items-center d-none">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
     </main>
 
 
