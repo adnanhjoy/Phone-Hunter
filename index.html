@@ -13,7 +13,7 @@
     <header class="text-center my-5">
         <h1>Welcome to our Phone Hunter</h1>
         <div class="d-flex justify-content-center my-5">
-            <input type="search" class="form-control w-50 border-3" id="search-field" placeholder="search your phone">
+            <input type="text" class="form-control w-50 border-3" id="search-field" placeholder="search your phone">
             <button id="search-button" class="btn btn-outline-primary ms-3">Search</button>
         </div>
     </header>
@@ -34,6 +34,27 @@
         <div id="loader" style="height: 500px;" class="d-flex justify-content-center align-items-center d-none">
             <div class="spinner-border" role="status">
                 <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="phoneDetailModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div id="phones-detail" class="modal-body">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
